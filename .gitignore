@@ -3,6 +3,7 @@ proj.win32/Debug.win32/
 proj.win32/LostRoutes.VC.db
 proj.win32/LostRoutes.VC.VC.opendb
 proj.linux/
+proj.tizen/
 proj.android-studio/
 proj.win8.1-universal/
 proj.win10/
