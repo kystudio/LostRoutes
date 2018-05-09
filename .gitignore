@@ -1,3 +1,16 @@
+LostRoutes/cocos2d/
+LostRoutes/proj.win32/Debug.win32/
+LostRoutes/proj.win32/.VC.db
+LostRoutes/proj.win32/LostRoutes.VC.VC.opendb
+LostRoutes/proj.linux/
+LostRoutes/proj.android-studio/
+LostRoutes/proj.win8.1-universal/
+LostRoutes/proj.win10/
+LostRoutes/proj.android/assets
+LostRoutes/proj.android/obj/
+LostRoutes/proj.android/bin/
+LostRoutes/proj.android/gen/
+
 # Prerequisites
 *.d
 
