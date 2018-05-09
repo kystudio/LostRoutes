@@ -1,4 +1,4 @@
-//
+﻿//
 //  Created by 关东升 on 2014-5-18.
 //  本书网站：http://www.cocoagame.net
 //  智捷iOS课堂在线课堂：http://v.51work6.com
@@ -15,7 +15,7 @@
 
 #include "cocos2d.h"
 
-//#include "HomeScene.h"
+#include "HomeScene.h"
 
 #include "SystemHeader.h"
 

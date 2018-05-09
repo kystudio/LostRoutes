@@ -1,4 +1,4 @@
-#include "HelloWorldScene.h"
+﻿#include "HelloWorldScene.h"
 
 USING_NS_CC;
 
@@ -108,8 +108,8 @@ void HelloWorld::loadingTextureCallBack(Texture2D *texture)
 
 void HelloWorld::delayCall(float dt)  
 {
-	//auto sc = HomeMenuLayer::createScene();
-	//Director::getInstance()->replaceScene(sc);
+	auto sc = HomeMenuLayer::createScene();
+	Director::getInstance()->replaceScene(sc);
 }
 
 void HelloWorld::loadingAudio()
