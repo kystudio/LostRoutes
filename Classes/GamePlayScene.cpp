@@ -1,4 +1,4 @@
-#include "GamePlayScene.h"
+ï»¿#include "GamePlayScene.h"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
@@ -36,40 +36,40 @@ bool GamePlayLayer::init()
 void GamePlayLayer::onEnter()
 {
 	Layer::onEnter();
-	// ³õÊ¼»¯ÔÝÍ£°´Å¥
+	// åˆå§‹åŒ–æš‚åœæŒ‰é’®
 	auto pauseSp = Sprite::createWithSpriteFrameName("gameplay.button.pause.png");
 	auto pauseItem = MenuItemSprite::create(pauseSp, pauseSp, CC_CALLBACK_1(GamePlayLayer::menuPauseCallback, this));
 	auto pauseMenu = Menu::create(pauseItem, NULL);
 	pauseMenu->setPosition(Vec2(30, _visibleSize.height - 28));
 	this->addChild(pauseMenu, 20, 999);
 
-	// Ìí¼ÓÔÉÊ¯1
+	// æ·»åŠ é™¨çŸ³1
 	auto stone1 = Enemy::createWithEnemyTypes(EnemyTypeStone);
 	stone1->setVelocity(Vec2(0, -100));
 	this->addChild(stone1, 10, GameSceneNodeBatchTagEnemy);
 
-	// Ìí¼ÓÐÐÐÇ
+	// æ·»åŠ è¡Œæ˜Ÿ
 	auto planet = Enemy::createWithEnemyTypes(EnemyTypePlanet);
 	planet->setVelocity(Vec2(0, -50));
 	this->addChild(planet, 10, GameSceneNodeBatchTagEnemy);
 
-	// Ìí¼ÓµÐ»ú1
+	// æ·»åŠ æ•Œæœº1
 	auto enemyFighter1 = Enemy::createWithEnemyTypes(EnemyTypeEnemy1);
 	enemyFighter1->setVelocity(Vec2(0, -80));
 	this->addChild(enemyFighter1, 10, GameSceneNodeBatchTagEnemy);
 
-	// Ìí¼ÓµÐ»ú2
+	// æ·»åŠ æ•Œæœº2
 	auto enemyFighter2 = Enemy::createWithEnemyTypes(EnemyTypeEnemy2);
 	enemyFighter2->setVelocity(Vec2(0, -100));
 	this->addChild(enemyFighter2, 10, GameSceneNodeBatchTagEnemy);
 
-	// Íæ¼ÒµÄ·É»ú
+	// çŽ©å®¶çš„é£žæœº
 	this->_fighter = Fighter::createWithSpriteFrameName("gameplay.fighter.png");
 	this->_fighter->setHitPoints(5);
 	this->_fighter->setPosition(Vec2(_visibleSize.width / 2, 70));
 	this->addChild(this->_fighter, 10, GameSceneNodeTagFighter);
 
-	// ×¢²á´¥Ãþ·É»úÊÂ¼þ¼àÌýÆ÷
+	// æ³¨å†Œè§¦æ‘¸é£žæœºäº‹ä»¶ç›‘å¬å™¨
 	_touchFighterListener = EventListenerTouchOneByOne::create();
 	_touchFighterListener->setSwallowTouches(true);
 
@@ -82,7 +82,7 @@ void GamePlayLayer::onEnter()
 		target->setPosition(target->getPosition() + touch->getDelta());
 	};
 
-	// Ìí¼Ó´¥Ãþ·É»úÊÂ¼þ¼àÌýÆ÷
+	// æ·»åŠ è§¦æ‘¸é£žæœºäº‹ä»¶ç›‘å¬å™¨
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(_touchFighterListener, this->_fighter);
 
 	_contactListener = EventListenerPhysicsContact::create();
@@ -91,7 +91,7 @@ void GamePlayLayer::onEnter()
 		auto spriteA = contact.getShapeA()->getBody()->getNode();
 		auto spriteB = contact.getShapeA()->getBody()->getNode();
 
-		// ¼ì²â·É»úÓëµÐÈËµÄÅö×²
+		// æ£€æµ‹é£žæœºä¸Žæ•Œäººçš„ç¢°æ’ž
 		log("A = %d  ------------ B = %d", spriteA->getTag(), spriteB->getTag());
 		Node * enemy1 = nullptr;
 		if (spriteA->getTag() == GameSceneNodeTagFighter && spriteB->getTag() == GameSceneNodeBatchTagEnemy)
@@ -110,7 +110,7 @@ void GamePlayLayer::onEnter()
 			return false;
 		}
 
-		// ¼ì²âÅÚµ¯ÓëµÐÈËµÄÅö×²
+		// æ£€æµ‹ç‚®å¼¹ä¸Žæ•Œäººçš„ç¢°æ’ž
 		Node * enemy2 = nullptr;
 
 		if (spriteA->getTag() == GameSceneNodeBatchTagBullet && spriteB->getTag() == GameSceneNodeBatchTagEnemy)
@@ -144,7 +144,7 @@ void GamePlayLayer::onEnter()
 
 	_eventDispatcher->addEventListenerWithFixedPriority(_contactListener, 2);
 
-	// Ã¿0.2sµ÷ÓÃshootBulletº¯Êý·¢Éä1·¢ÅÚµ¯
+	// æ¯0.2sè°ƒç”¨shootBulletå‡½æ•°å‘å°„1å‘ç‚®å¼¹
 	this->schedule(schedule_selector(GamePlayLayer::shootBullet), 0.2f);
 
 	this->_score = 0;
@@ -197,16 +197,16 @@ void GamePlayLayer::shootBullet(float dt)
 
 void GamePlayLayer::initBG()
 {
-	// Ìí¼Ó±³¾°µØÍ¼
+	// æ·»åŠ èƒŒæ™¯åœ°å›¾
 	auto bg = TMXTiledMap::create("map/blue_bg.tmx");
 	this->addChild(bg, 0, GameSceneNodeBatchTagBackground);
 
-	// ·ÅÖÃ·¢¹âÁ£×Ó±³¾°
+	// æ”¾ç½®å‘å…‰ç²’å­èƒŒæ™¯
 	ParticleSystem * ps = ParticleSystemQuad::create("particle/light.plist");
 	ps->setPosition(Vec2(_visibleSize.width, _visibleSize.height / 2));
 	this->addChild(ps, 0, GameSceneNodeBatchTagBackground);
 
-	// Ìí¼Ó±³¾°¾«Áé1
+	// æ·»åŠ èƒŒæ™¯ç²¾çµ1
 	auto sprite1 = Sprite::createWithSpriteFrameName("gameplay.bg.sprite-1.png");
 	sprite1->setPosition(Vec2(-50, -50));
 	addChild(sprite1, 0, GameSceneNodeBatchTagBackground);
@@ -216,7 +216,7 @@ void GamePlayLayer::initBG()
 	ActionInterval * as1 = Sequence::create(ac1, ac2, NULL);
 	sprite1->runAction(RepeatForever::create(EaseSineInOut::create(as1)));
 
-	// Ìí¼Ó±³¾°¾«Áé2
+	// æ·»åŠ èƒŒæ™¯ç²¾çµ2
 	auto sprite2 = Sprite::createWithSpriteFrameName("gameplay.bg.sprite-2.png");
 	sprite2->setPosition(Vec2(_visibleSize.width, 0));
 	addChild(sprite2, 0, GameSceneNodeBatchTagBackground);
@@ -240,7 +240,7 @@ void GamePlayLayer::updateStatusBarFighter()
 	fg->setPosition(Vec2(_visibleSize.width - 60, _visibleSize.height - 28));
 	this->addChild(fg, 20, GameSceneNodeTagStatusBarFighterNode);
 
-	// Ìí¼ÓÉúÃüÖµ x5
+	// æ·»åŠ ç”Ÿå‘½å€¼ x5
 	Node * n2 = this->getChildByTag(GameSceneNodeTagStatusBarLifeNode);
 
 	if (n2)
@@ -286,20 +286,20 @@ void GamePlayLayer::menuPauseCallback(cocos2d::Ref * pSender)
 		SimpleAudioEngine::getInstance()->playEffect(sound_1);
 	}
 
-	// ÔÝÍ£µ±Ç°²ãÖÐµÄnode
+	// æš‚åœå½“å‰å±‚ä¸­çš„node
 	this->pause();
 
 	for (const auto& node : this->getChildren())
 	{
 		node->pause();
 	}
-	// ·µ»ØÖ÷²Ëµ¥
+	// è¿”å›žä¸»èœå•
 	auto backNormal = Sprite::createWithSpriteFrameName("gameplay.button.back.png");
 	auto backSelected = Sprite::createWithSpriteFrameName("gameplay.button.back-on.png");
 
 	auto backItem = MenuItemSprite::create(backNormal, backSelected, CC_CALLBACK_1(GamePlayLayer::menuBackCallback, this));
 
-	// ¼ÌÐøÓÎÏ·²Ëµ¥
+	// ç»§ç»­æ¸¸æˆèœå•
 	auto resumeNoraml = Sprite::createWithSpriteFrameName("gameplay.button.resume.png");
 	auto resumeSelected = Sprite::createWithSpriteFrameName("gameplay.button.resume-on.png");
 
@@ -360,7 +360,7 @@ void GamePlayLayer::handleFighterCollidingWithEnemy(Enemy * enemy)
 
 	_fighter->setHitPoints(_fighter->getHitPoints() - 1);
 	this->updateStatusBarFighter();
-	// ÓÎÏ·½áÊø
+	// æ¸¸æˆç»“æŸ
 	if (_fighter->getHitPoints() <= 0)
 	{
 		log("GameOver");
@@ -416,7 +416,7 @@ void GamePlayLayer::handleBulletCollidingWithEnemy(Enemy * enemy)
 			break;
 		}
 
-		// Ã¿´Î»ñµÃ1000·ÖÖµ£¬ÉúÃüÖµ+1£¬_scorePlaceholder»Ö¸´Îª0
+		// æ¯æ¬¡èŽ·å¾—1000åˆ†å€¼ï¼Œç”Ÿå‘½å€¼+1ï¼Œ_scorePlaceholderæ¢å¤ä¸º0
 		if (_scorePlaceholder >= 1000)
 		{
 			_fighter->setHitPoints(_fighter->getHitPoints() + 1);

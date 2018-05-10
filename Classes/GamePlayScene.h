@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "cocos2d.h"
 #include "SystemHeader.h"
 #include "MyUtility.h"
@@ -18,7 +18,7 @@
 #define GameSceneNodeTagExplosionParticleSystem 901
 #define GameSceneNodeBatchTagBullet				902
 #define GameSceneNodeBatchTagEnemy				903
-// ·¢ÉäÅÚµ¯µÄËÙ¶È
+// å‘å°„ç‚®å¼¹çš„é€Ÿåº¦
 #define GameSceneBulletVelocity					300
 
 //typedef enum
@@ -42,9 +42,9 @@ class GamePlayLayer : public BaseLayer
 private:
 	Fighter * _fighter;
 	cocos2d::Menu * _menu;
-	// ·ÖÊı
+	// åˆ†æ•°
 	int _score;
-	// ¼ÇÂ¼0~999·ÖÊı
+	// è®°å½•0~999åˆ†æ•°
 	int _scorePlaceholder;
 
 	cocos2d::EventListenerTouchOneByOne * _touchFighterListener;
@@ -59,24 +59,24 @@ public:
 	virtual void onEnterTransitionDidFinish();
 	virtual void onExit();
 	
-	// ·¢ÉäÅÚµ¯
+	// å‘å°„ç‚®å¼¹
 	void shootBullet(float dt);
 
-	// ³õÊ¼»¯±³¾°
+	// åˆå§‹åŒ–èƒŒæ™¯
 	void initBG();
 
-	// ÔÚ×´Ì¬À¸ÖĞÉèÖÃºÍ¸üĞÂÍæ¼ÒµÄÉúÃüÖµ
+	// åœ¨çŠ¶æ€æ ä¸­è®¾ç½®å’Œæ›´æ–°ç©å®¶çš„ç”Ÿå‘½å€¼
 	void updateStatusBarFighter();
-	// ÔÚ×´Ì¬À¸ÖĞ¸üĞÂµÃ·Ö
+	// åœ¨çŠ¶æ€æ ä¸­æ›´æ–°å¾—åˆ†
 	void updateStatusBarScore();
 
 	void menuPauseCallback(cocos2d::Ref * pSender);
 	void menuBackCallback(cocos2d::Ref * pSender);
 	void menuResumeCallback(cocos2d::Ref * pSender);
 
-	// ´¦ÀíÍæ¼ÒÓëµĞÈËµÄÅö×²¼ì²â
+	// å¤„ç†ç©å®¶ä¸æ•Œäººçš„ç¢°æ’æ£€æµ‹
 	void handleFighterCollidingWithEnemy(Enemy * enemy);
-	// ´¦Àí×Óµ¯ÓëµĞÈËµÄÅö×²¼ì²â
+	// å¤„ç†å­å¼¹ä¸æ•Œäººçš„ç¢°æ’æ£€æµ‹
 	void handleBulletCollidingWithEnemy(Enemy * enemy);
 
 	CREATE_FUNC(GamePlayLayer);
