@@ -1,4 +1,4 @@
-#include "SettingScene.h"
+ï»¿#include "SettingScene.h"
 
 USING_NS_CC;
 
@@ -27,13 +27,13 @@ bool SettingLayer::init()
 	top->setPosition(origin + Vec2(visibleSize.width / 2, visibleSize.height - top->getContentSize().height / 2));
 	addChild(top);
 
-	//ÒôÐ§²Ëµ¥Ïî
+	//éŸ³æ•ˆèœå•é¡¹
 	auto soundOnSp = Sprite::createWithSpriteFrameName("setting.check-on.png");
 	auto soundOffSp = Sprite::createWithSpriteFrameName("setting.check-off.png");
 	auto soundOnItem = MenuItemSprite::create(soundOnSp, NULL);
 	auto soundOffItem = MenuItemSprite::create(soundOffSp, NULL);
 	auto soundToggleItem = MenuItemToggle::createWithCallback(CC_CALLBACK_1(SettingLayer::menuSoundToggleCallback, this), soundOnItem, soundOffItem, NULL);
-	//ÒôÀÖ²Ëµ¥Ïî
+	//éŸ³ä¹èœå•é¡¹
 	auto musicOnSp = Sprite::createWithSpriteFrameName("setting.check-on.png");
 	auto musicOffSp = Sprite::createWithSpriteFrameName("setting.check-off.png");
 	auto musicOnItem = MenuItemSprite::create(musicOnSp, NULL);
@@ -55,7 +55,7 @@ bool SettingLayer::init()
 	lblMusic->setPosition(menu->getPosition() - Vec2(100, 45));
 	addChild(lblMusic, 1);
 
-	// ÉèÖÃÒôÐ§ºÍÒôÀÖÑ¡ÖÐ×´Ì¬
+	// è®¾ç½®éŸ³æ•ˆå’ŒéŸ³ä¹é€‰ä¸­çŠ¶æ€
 	_defaults = UserDefault::getInstance();
 
 	if (_defaults->getBoolForKey(MUSIC_KEY))

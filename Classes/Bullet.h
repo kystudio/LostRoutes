@@ -1,13 +1,13 @@
-#pragma once
+Ôªø#pragma once
 #include "cocos2d.h"
 
 #include "Fighter.h"
 
 class Bullet : public cocos2d::Sprite
 {
-	CC_SYNTHESIZE(cocos2d::Vec2, velocity, Velocity); // ÀŸ∂»
+	CC_SYNTHESIZE(cocos2d::Vec2, velocity, Velocity); // ÈÄüÂ∫¶
 public:
-	void shootBulletFromFighter(Fighter * fighter); // ∑¢…‰≈⁄µØ
+	void shootBulletFromFighter(Fighter * fighter); // ÂèëÂ∞ÑÁÇÆÂºπ
 	virtual void update(float dt);
 	static Bullet * createWithSpriteFrameName(const char * spriteFrameName);
 };

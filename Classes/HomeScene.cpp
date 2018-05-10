@@ -1,4 +1,4 @@
-#include "HomeScene.h"
+ï»¿#include "HomeScene.h"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
@@ -34,18 +34,18 @@ bool HomeMenuLayer::init()
 	end->setPosition(Vec2(visibleSize.width / 2, top->getContentSize().height / 2));
 	addChild(end);
 
-	// Ìí¼Ó²Ëµ¥
-	//1.¿ªÊ¼²Ëµ¥
+	// æ·»åŠ èœå•
+	//1.å¼€å§‹èœå•
 	auto startNormal = Sprite::createWithSpriteFrameName("home.button.start.png");
 	auto startSelected = Sprite::createWithSpriteFrameName("home.button.start-on.png");
 	auto startMenuItem = MenuItemSprite::create(startNormal,startSelected,CC_CALLBACK_1(HomeMenuLayer::menuItemCallback, this));
 	startMenuItem->setTag(ActionType::MenuItemStart);
-	//2.ÉèÖÃ²Ëµ¥
+	//2.è®¾ç½®èœå•
 	auto settingNormal = Sprite::createWithSpriteFrameName("home.button.setting.png");
 	auto settingSelected = Sprite::createWithSpriteFrameName("home.button.setting-on.png");
 	auto settingMenuItem = MenuItemSprite::create(settingNormal, settingSelected, CC_CALLBACK_1(HomeMenuLayer::menuItemCallback, this));
 	settingMenuItem->setTag(ActionType::MenuItemSetting);
-	//3.°ïÖú²Ëµ¥
+	//3.å¸®åŠ©èœå•
 	auto helpNormal = Sprite::createWithSpriteFrameName("home.button.help.png");
 	auto helpSelected = Sprite::createWithSpriteFrameName("home.button.help-on.png");
 	auto helpMenuItem = MenuItemSprite::create(helpNormal, helpSelected, CC_CALLBACK_1(HomeMenuLayer::menuItemCallback, this));

@@ -8,6 +8,7 @@
 #include "Enemy.h"
 #include "Fighter.h"
 #include "Bullet.h"
+#include "GameOverScene.h"
 
 #define GameSceneNodeTagStatusBarFighterNode	301
 #define GameSceneNodeTagStatusBarLifeNode		302
@@ -37,7 +38,7 @@ enum EnemyScores
 	EnemyPlanet_Score = 20
 };
 
-class GamePlayLayer : public BaseLayer
+class GamePlayLayer : public cocos2d::Layer
 {
 private:
 	Fighter * _fighter;

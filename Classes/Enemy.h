@@ -1,30 +1,30 @@
-#pragma once
+ï»¿#pragma once
 #include "cocos2d.h"
 
-// ¶¨ÒåµĞÈËÃû³ÆÒ²ÊÇµĞÈË¾«ÁéÖ¡µÄÃû×Ö
+// å®šä¹‰æ•Œäººåç§°ä¹Ÿæ˜¯æ•Œäººç²¾çµå¸§çš„åå­—
 #define Enemy_Stone "gameplay.stone1.png"
 #define Enemy_1 "gameplay.enemy-1.png"
 #define Enemy_2 "gameplay.enemy-2.png"
 #define Enemy_Planet "gameplay.enemy.planet.png"
 
-// ¶¨ÒåµĞÈËÀàĞÍ
+// å®šä¹‰æ•Œäººç±»å‹
 typedef enum
 {
-	EnemyTypeStone = 0, // ÔÉÊ¯
-	EnemyTypeEnemy1, // µĞ»ú1
-	EnemyTypeEnemy2, // µĞ»ú2
-	EnemyTypePlanet // ĞĞĞÇ
+	EnemyTypeStone = 0, // é™¨çŸ³
+	EnemyTypeEnemy1, // æ•Œæœº1
+	EnemyTypeEnemy2, // æ•Œæœº2
+	EnemyTypePlanet // è¡Œæ˜Ÿ
 } EnemyTypes;
 
 class Enemy : public cocos2d::Sprite
 {
-	CC_SYNTHESIZE(EnemyTypes, enemyType, EnemyType); // µĞÈËÀàĞÍ
-	CC_SYNTHESIZE(int, initialHitPoints, InitialHitPoints); // ³õÊ¼µÄÉúÃüÖµ
-	CC_SYNTHESIZE(int, hitPoints, HitPoints); // µ±Ç°µÄÉúÃüÖµ
-	CC_SYNTHESIZE(cocos2d::Vec2, velocity, Velocity); // ËÙ¶È
+	CC_SYNTHESIZE(EnemyTypes, enemyType, EnemyType); // æ•Œäººç±»å‹
+	CC_SYNTHESIZE(int, initialHitPoints, InitialHitPoints); // åˆå§‹çš„ç”Ÿå‘½å€¼
+	CC_SYNTHESIZE(int, hitPoints, HitPoints); // å½“å‰çš„ç”Ÿå‘½å€¼
+	CC_SYNTHESIZE(cocos2d::Vec2, velocity, Velocity); // é€Ÿåº¦
 public:
-	Enemy(EnemyTypes enemyType); // ¹¹Ôìº¯Êı
-	void spawn(); // ²úÉúµĞÈËº¯Êı
-	virtual void update(float dt); // ÓÎÏ·Ñ­»·µ÷ÓÃµÄÄ¬ÈÏº¯Êı
-	static Enemy * createWithEnemyTypes(EnemyTypes enemyType); // ¾²Ì¬´´½¨µĞÈËº¯Êı
+	Enemy(EnemyTypes enemyType); // æ„é€ å‡½æ•°
+	void spawn(); // äº§ç”Ÿæ•Œäººå‡½æ•°
+	virtual void update(float dt); // æ¸¸æˆå¾ªç¯è°ƒç”¨çš„é»˜è®¤å‡½æ•°
+	static Enemy * createWithEnemyTypes(EnemyTypes enemyType); // é™æ€åˆ›å»ºæ•Œäººå‡½æ•°
 };

@@ -1,4 +1,4 @@
-#include "Enemy.h"
+﻿#include "Enemy.h"
 
 USING_NS_CC;
 
@@ -56,7 +56,7 @@ Enemy * Enemy::createWithEnemyTypes(EnemyTypes enemyType)
 				Vec2(55, -2.25)};
 			body->addShape(PhysicsShapePolygon::create(verts, 6));
 		}
-		else if (enemyType == EnemyTypeEnemy1)
+		else if (enemyType == EnemyTypeEnemy2)
 		{
 			Vec2 verts[] = {
 				Vec2(1.25, 32.25),

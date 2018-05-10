@@ -1,4 +1,4 @@
-
+﻿
 #include "MyUtility.h"
 
 string MyUtility::getCurrentTime()  

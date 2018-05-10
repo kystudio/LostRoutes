@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "cocos2d.h"
 
 class Fighter :public cocos2d::Sprite

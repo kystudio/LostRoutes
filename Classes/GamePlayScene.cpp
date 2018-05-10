@@ -20,7 +20,7 @@ Scene * GamePlayLayer::createScene()
 
 bool GamePlayLayer::init()
 {
-	if (!BaseLayer::init())
+	if (!Layer::init())
 	{
 		return false;
 	}
@@ -89,18 +89,20 @@ void GamePlayLayer::onEnter()
 	_contactListener->onContactBegin = [this](PhysicsContact& contact)
 	{
 		auto spriteA = contact.getShapeA()->getBody()->getNode();
-		auto spriteB = contact.getShapeA()->getBody()->getNode();
+		auto spriteB = contact.getShapeB()->getBody()->getNode();
 
 		// 检测飞机与敌人的碰撞
-		log("A = %d  ------------ B = %d", spriteA->getTag(), spriteB->getTag());
+		//log("A = %d  ------------ B = %d", spriteA->getTag(), spriteB->getTag());
 		Node * enemy1 = nullptr;
 		if (spriteA->getTag() == GameSceneNodeTagFighter && spriteB->getTag() == GameSceneNodeBatchTagEnemy)
 		{
+			log("enemy1 = spriteB");
 			enemy1 = spriteB;
 		}
 
 		if (spriteA->getTag() == GameSceneNodeBatchTagEnemy && spriteB->getTag() == GameSceneNodeTagFighter)
 		{
+			log("enemy1 = spriteA");
 			enemy1 = spriteA;
 		}
 
@@ -120,6 +122,7 @@ void GamePlayLayer::onEnter()
 				return false;
 			}
 			spriteA->setVisible(false);
+			log("enemy2 = spriteB");
 			enemy2 = spriteB;
 		}
 
@@ -130,6 +133,7 @@ void GamePlayLayer::onEnter()
 				return false;
 			}
 			spriteB->setVisible(false);
+			log("enemy1 = spriteB");
 			enemy2 = spriteA;
 		}
 
@@ -142,7 +146,7 @@ void GamePlayLayer::onEnter()
 		return false;
 	};
 
-	_eventDispatcher->addEventListenerWithFixedPriority(_contactListener, 2);
+	_eventDispatcher->addEventListenerWithFixedPriority(_contactListener, 1);
 
 	// 每0.2s调用shootBullet函数发射1发炮弹
 	this->schedule(schedule_selector(GamePlayLayer::shootBullet), 0.2f);
@@ -203,7 +207,7 @@ void GamePlayLayer::initBG()
 
 	// 放置发光粒子背景
 	ParticleSystem * ps = ParticleSystemQuad::create("particle/light.plist");
-	ps->setPosition(Vec2(_visibleSize.width, _visibleSize.height / 2));
+	ps->setPosition(Vec2(_visibleSize.width, _visibleSize.height) / 2);
 	this->addChild(ps, 0, GameSceneNodeBatchTagBackground);
 
 	// 添加背景精灵1
@@ -347,7 +351,7 @@ void GamePlayLayer::handleFighterCollidingWithEnemy(Enemy * enemy)
 	}
 
 	ParticleSystem * explosion = ParticleSystemQuad::create("particle/explosion.plist");
-	explosion->setPosition(enemy->getPosition());
+	explosion->setPosition(_fighter->getPosition());
 	this->addChild(explosion, 2, GameSceneNodeTagExplosionParticleSystem);
 	if (_defaults->getBoolForKey(SOUND_KEY))
 	{
@@ -364,6 +368,12 @@ void GamePlayLayer::handleFighterCollidingWithEnemy(Enemy * enemy)
 	if (_fighter->getHitPoints() <= 0)
 	{
 		log("GameOver");
+		auto gameOverLayer = GameOverLayer::createWithScore(_score);
+		auto gameOverScene = Scene::create();
+		gameOverScene->addChild(gameOverLayer);
+
+		auto tsc = TransitionFade::create(1.0f, gameOverScene);
+		Director::getInstance()->pushScene(tsc);
 	} 
 	else
 	{

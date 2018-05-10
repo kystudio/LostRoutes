@@ -1,4 +1,4 @@
-#include "Fighter.h"
+ï»¿#include "Fighter.h"
 
 USING_NS_CC;
 
@@ -12,7 +12,7 @@ Fighter * Fighter::createWithSpriteFrameName(const char * spriteFrameName)
 
 		ParticleSystem * ps = ParticleSystemQuad::create("particle/fire.plist");
 
-		// ÔÚ·É»úÏÂÃæ
+		// åœ¨é£žæœºä¸‹é¢
 		ps->setPosition(Vec2(fighter->getContentSize().width / 2, 0));
 		ps->setRotation(180.0f);
 		ps->setScale(0.5f);
