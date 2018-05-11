@@ -23,7 +23,7 @@ bool HomeMenuLayer::init()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	auto bg = TMXTiledMap::create("map/red_bg.tmx");
+	auto bg = TMXTiledMap::create("hd/map/red_bg.tmx");
 	addChild(bg);
 
 	auto top = Sprite::createWithSpriteFrameName("home-top.png");
@@ -81,7 +81,7 @@ void HomeMenuLayer::menuItemCallback(Ref * sender)
 	Scene * tsc = nullptr;
 
 	MenuItem *menuItem = (MenuItem*)sender;
-	log("MenuItem Tag = %d", menuItem->getTag());
+	//log("MenuItem Tag = %d", menuItem->getTag());
 	switch (menuItem->getTag())
 	{
 	case ActionType::MenuItemStart:

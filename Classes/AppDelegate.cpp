@@ -76,20 +76,26 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//资源大小
 	auto resourceSize = Size(640, 960);
 
-	std::vector<std::string> searchPaths;
-
-	if (screenSize.height > 960) {	//640x1136
-		designSize = Size(320, 568);
-		searchPaths.push_back("hd");
-	}
-	else {
-		searchPaths.push_back("hd");
-	}
+	//std::vector<std::string> searchPaths;
 
 	director->setContentScaleFactor(resourceSize.width / designSize.width); //默认为1.0f
 
-	FileUtils::getInstance()->setSearchPaths(searchPaths);
-
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+//	if (screenSize.height > 960) {	//640x1136
+//		designSize = Size(320, 568);
+//		searchPaths.push_back("hd");
+//	}
+//	else {
+//		searchPaths.push_back("hd");
+//	}
+//	FileUtils::getInstance()->setSearchPaths(searchPaths);
+//#else
+//	FileUtils::getInstance()->addSearchPath(FileUtils::getInstance()->getWritablePath());
+//	std::vector<std::string> searchpath;
+//	searchpath.push_back(FileUtils::getInstance()->getWritablePath() + "hd");
+//	FileUtils::getInstance()->setSearchPaths(searchpath);
+//#endif
+	
 	glview->setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy::FIXED_WIDTH);
 
 	// create a scene. it's an autorelease object

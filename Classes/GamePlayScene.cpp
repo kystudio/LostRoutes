@@ -96,13 +96,11 @@ void GamePlayLayer::onEnter()
 		Node * enemy1 = nullptr;
 		if (spriteA->getTag() == GameSceneNodeTagFighter && spriteB->getTag() == GameSceneNodeBatchTagEnemy)
 		{
-			log("enemy1 = spriteB");
 			enemy1 = spriteB;
 		}
 
 		if (spriteA->getTag() == GameSceneNodeBatchTagEnemy && spriteB->getTag() == GameSceneNodeTagFighter)
 		{
-			log("enemy1 = spriteA");
 			enemy1 = spriteA;
 		}
 
@@ -122,7 +120,6 @@ void GamePlayLayer::onEnter()
 				return false;
 			}
 			spriteA->setVisible(false);
-			log("enemy2 = spriteB");
 			enemy2 = spriteB;
 		}
 
@@ -133,7 +130,6 @@ void GamePlayLayer::onEnter()
 				return false;
 			}
 			spriteB->setVisible(false);
-			log("enemy1 = spriteB");
 			enemy2 = spriteA;
 		}
 
@@ -202,7 +198,7 @@ void GamePlayLayer::shootBullet(float dt)
 void GamePlayLayer::initBG()
 {
 	// 添加背景地图
-	auto bg = TMXTiledMap::create("map/blue_bg.tmx");
+	auto bg = TMXTiledMap::create("hd/map/blue_bg.tmx");
 	this->addChild(bg, 0, GameSceneNodeBatchTagBackground);
 
 	// 放置发光粒子背景

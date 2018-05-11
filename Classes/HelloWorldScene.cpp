@@ -31,10 +31,10 @@ bool HelloWorld::init()
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	///////////////////////////////////////////////
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/loading_texture.plist");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("hd/texture/loading_texture.plist");
 
 	// add "HelloWorld" splash screen"
-	auto bg = TMXTiledMap::create("map/red_bg.tmx");
+	auto bg = TMXTiledMap::create("hd/map/red_bg.tmx");
 
 	// add the sprite as a child to this layer
 	this->addChild(bg);
@@ -52,7 +52,7 @@ bool HelloWorld::init()
 	for( int i=1; i<= 4; i++)
 	{
 		__String *frameName = __String::createWithFormat("loding%d.png",i);
-		log("frameName = %s",frameName->getCString());
+		//log("frameName = %s",frameName->getCString());
 		SpriteFrame *spriteFrame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frameName->getCString());
 		animation->addSpriteFrame(spriteFrame);
 	}
@@ -66,13 +66,13 @@ bool HelloWorld::init()
 
 	m_nNumberOfLoaded = 0;
 
-	Director::getInstance()->getTextureCache()->addImageAsync("texture/home_texture.png",
+	Director::getInstance()->getTextureCache()->addImageAsync("hd/texture/home_texture.png",
 		CC_CALLBACK_1(HelloWorld::loadingTextureCallBack, this));
 
-	Director::getInstance()->getTextureCache()->addImageAsync("texture/setting_texture.png",
+	Director::getInstance()->getTextureCache()->addImageAsync("hd/texture/setting_texture.png",
 		CC_CALLBACK_1(HelloWorld::loadingTextureCallBack, this));
 
-	Director::getInstance()->getTextureCache()->addImageAsync("texture/gameplay_texture.png",
+	Director::getInstance()->getTextureCache()->addImageAsync("hd/texture/gameplay_texture.png",
 		CC_CALLBACK_1(HelloWorld::loadingTextureCallBack, this));
 
 
@@ -89,15 +89,15 @@ void HelloWorld::loadingTextureCallBack(Texture2D *texture)
 	switch (m_nNumberOfLoaded++)
 	{
 	case 0:
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/home_texture.plist",texture);
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("hd/texture/home_texture.plist",texture);
 		log("home textrue ok.");
 		break;
 	case 1:
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/setting_texture.plist",texture);
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("hd/texture/setting_texture.plist",texture);
 		log("setting textrue ok.");
 		break;
 	case 2:
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("texture/gameplay_texture.plist",texture);
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("hd/texture/gameplay_texture.plist",texture);
 		log("gamepla textrue ok.");
 		this->schedule(schedule_selector(HelloWorld::delayCall),1,1,3);
 		//float interval, unsigned int repeat, float delay
@@ -129,7 +129,7 @@ void HelloWorld::onExit()
 	Layer::onExit();	
 	_loadingAudioThread->join();
 	CC_SAFE_DELETE(_loadingAudioThread);
-	SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("texture/loading_texture.plist");
-	Director::getInstance()->getTextureCache()->removeTextureForKey("texture/loading_texture.png");
+	SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("hd/texture/loading_texture.plist");
+	Director::getInstance()->getTextureCache()->removeTextureForKey("hd/texture/loading_texture.png");
 	this->unschedule(schedule_selector(HelloWorld::delayCall));
 }

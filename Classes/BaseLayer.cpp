@@ -16,7 +16,7 @@ bool BaseLayer::init()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	auto bg = TMXTiledMap::create("map/red_bg.tmx");
+	auto bg = TMXTiledMap::create("hd/map/red_bg.tmx");
 	addChild(bg);	
 
 	//眼镜精灵.

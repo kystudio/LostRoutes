@@ -16,7 +16,7 @@ bool GameOverLayer::init()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	//添加背景地图.
-	auto bg = TMXTiledMap::create("map/blue_bg.tmx");
+	auto bg = TMXTiledMap::create("hd/map/blue_bg.tmx");
 	this->addChild(bg);
 
 	//放置发光粒子背景
